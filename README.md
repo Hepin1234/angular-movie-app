@@ -1,27 +1,54 @@
-# FirstProject
+# Angular Movie App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.7.
+A small movie browsing app built with **Angular 16** and **TypeScript**, with login and sign-up connected to a REST API.
 
-## Development server
+I built it in 2023 while working as a developer at Antim Technologies, to practise Angular components, routing, forms and HTTP services.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+![Screenshot](docs/screenshot.png)
 
-## Code scaffolding
+## Features
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Login and sign-up** with Angular reactive forms and validation. Form data is sent to a REST API with `HttpClient`.
+- **User list** loaded from the API.
+- **Movie pages** for trending, in theatres and popular movies, with a detail page for each movie (`/movie/:type/:id`).
+- **Reusable star-rating component** using `@Input()`.
+- Code split into components, services and a feature module.
 
-## Build
+## Tech stack
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Angular 16 · TypeScript · RxJS · Reactive Forms · Angular Router · Bootstrap / ng-bootstrap · SCSS · Jasmine + Karma
 
-## Running unit tests
+## Run it locally
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+You need Node.js (18 or newer) and npm.
 
-## Running end-to-end tests
+```bash
+git clone https://github.com/Hepin1234/angular-movie-app.git
+cd angular-movie-app
+npm install
+npm start
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Then open http://localhost:4200.
 
-## Further help
+The movie data comes from JSON files in `src/assets/data`, so the movie pages work offline.
+Login and sign-up call the company's demo API from 2023, which may no longer be online.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Tests
+
+```bash
+npm test
+```
+
+The login form has unit tests that check:
+
+- the form is invalid when the fields are empty
+- the API is not called when the form is invalid
+- a correct login goes to the home page
+- a wrong login shows an error message
+
+## What I would do differently today
+
+- Check the password on the server and return a token, instead of comparing it in the browser.
+- Use typed interfaces instead of `any` for API responses.
+- Load the movie JSON with a relative path instead of `http://localhost:4200/...`.
